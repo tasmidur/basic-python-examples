@@ -26,6 +26,8 @@ Some packages, like mysqlclient, require system-level dependencies to be install
 
 ```
 sudo apt-get install python3-dev default-libmysqlclient-dev build-essential
+sudo apt-get update
+sudo apt-get install pkg-config
 ```
 
 Install Required Packages
