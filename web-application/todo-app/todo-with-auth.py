@@ -87,7 +87,10 @@ def index():
     tasks = cursor.fetchall()
     cursor.close()
     db.close()
-    return render_template('index.html', tasks=tasks)
+    return render_template('index.html', tasks=tasks,auth_user={
+        'username': session.get('username'),
+        'user_id': session.get('user_id')
+    })
 
 @app.route('/add', methods=['POST'])
 def add_task():
