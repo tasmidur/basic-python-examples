@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TODO Application</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-5">
+          <!-- Logout Button -->
+        <a href="{{ url_for('logout') }}" class="btn btn-danger mb-4 float-right">Logout</a>
+        <h1 class="mb-4">TODO List</h1>
+
+        <!-- Add Task Form -->
+        <form action="/add" method="POST" class="mb-4">
+            <div class="form-group">
+                <input type="text" name="title" class="form-control" placeholder="Task Title" required>
+            </div>
+            <div class="form-group">
+                <textarea name="description" class="form-control" placeholder="Task Description"></textarea>
+            </div>
+            <div class="form-group">
+                <input type="number" name="priority" class="form-control" placeholder="Priority" required>
+            </div>
+            <div class="form-group">
+                <input type="datetime-local" name="date" class="form-control" placeholder="Date" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Add Task</button>
+        </form>
+
+        <ul class="list-group">
+            {% for task in tasks %}
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+                <div>
+                    <strong>{{ task[1] }}</strong> - {{ task[2] }} (Priority: {{ task[3] }}) (Date: {{ task[6] }})
+                </div>
+                <div>
+                    <a href="/edit/{{ task[0] }}" class="btn btn-warning btn-sm">Edit</a>
+                    <a href="/delete/{{ task[0] }}" class="btn btn-danger btn-sm">Delete</a>
+                </div>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+</body>
+</html>
