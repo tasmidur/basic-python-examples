@@ -19,14 +19,26 @@ Create a Virtual Environment (Optional but recommended)
 
 ```
 python3 -m venv venv
-source venv/bin/activate  # On Windows use `venv\Scripts\activate`
+source venv/bin/activate  # On Windows use "venv\Scripts\activate"
+```
+For MySql client:
+Some packages, like mysqlclient, require system-level dependencies to be installed. For mysqlclient, you need to have the MySQL development libraries installed.
 
 ```
+sudo apt-get install python3-dev default-libmysqlclient-dev build-essential
+```
+
 Install Required Packages
-```
-pip install Flask mysqlclient Werkzeug
 
 ```
+pip3 install Flask mysqlclient Werkzeug
+
+```
+ Upgrade pip and setuptools
+
+ ```
+  pip3 install --upgrade pip3 setuptools
+ ```
 ## Database Setup
 Log in to MySQL
 ```
