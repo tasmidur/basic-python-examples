@@ -20,6 +20,9 @@ Python is a high-level, interpreted programming language known for its clear syn
 6. Interpreted Language: Code is executed line by line, aiding in debugging.
 7. Multiple Programming Paradigms: Supports both object-oriented and functional programming styles.
 
+## Setup Environment
+[setup](https://github.com/tasmidur/basic-python-examples/blob/main/PYTHON-SETUP.md)
+
 ## Examples:
 
 ### 1. Variables and Data Types
