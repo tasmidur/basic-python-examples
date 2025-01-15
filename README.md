@@ -21,7 +21,7 @@ Python is a high-level, interpreted programming language known for its clear syn
 7. Multiple Programming Paradigms: Supports both object-oriented and functional programming styles.
 
 ## Setup Environment
-[setup](https://github.com/tasmidur/basic-python-examples/blob/main/PYTHON-SETUP.md)
+[Follow the link for setup environment](https://github.com/tasmidur/basic-python-examples/blob/main/PYTHON-SETUP.md)
 
 ## Examples:
 
