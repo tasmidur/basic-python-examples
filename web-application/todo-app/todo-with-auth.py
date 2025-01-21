@@ -2,8 +2,11 @@ from flask import Flask, request, redirect, url_for, render_template, session, f
 import MySQLdb
 import os
 from werkzeug.security import generate_password_hash, check_password_hash
+import logging
+
 
 app = Flask(__name__)
+
 
 # Secret key for session management
 app.secret_key = os.urandom(24)
@@ -11,8 +14,12 @@ app.secret_key = os.urandom(24)
 # MySQL configurations
 app.config['MYSQL_HOST'] = 'localhost'
 app.config['MYSQL_USER'] = 'root'
-app.config['MYSQL_PASSWORD'] = '123456'
-app.config['MYSQL_DB'] = 'py'
+app.config['MYSQL_PASSWORD'] = 'root'
+app.config['MYSQL_DB'] = 'python_basic'
+
+# Set up logging
+logging.basicConfig(level=logging.DEBUG)
+app.logger.setLevel(logging.DEBUG)
 
 def get_db_connection():
     return MySQLdb.connect(
@@ -25,6 +32,7 @@ def get_db_connection():
 # Middleware to check authentication
 @app.before_request
 def require_login():
+    app.logger.debug('Request Body: %s', request.get_data())
     public_routes = ['login', 'register']
     if request.endpoint not in public_routes and 'user_id' not in session:
         flash('You need to log in first.', 'danger')
