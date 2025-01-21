@@ -1,0 +1,13 @@
+/* admin_custom.css */
+.form-row {
+    margin-bottom: 20px;
+}
+
+.collapse {
+    background-color: #f9f9f9;
+}
+
+.admin-title {
+    font-size: 1.5em;
+    font-weight: bold;
+}
