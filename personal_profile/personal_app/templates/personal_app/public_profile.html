@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ user.first_name|default:"User " }} {{ user.last_name|default:"Profile" }}</title>
+    <!-- Bootstrap CSS CDN -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .profile-header {
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-bottom: 1px solid #dee2e6;
+            text-align: center;
+        }
+        .profile-picture {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+        .section-title {
+            margin-top: 30px;
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <!-- Profile Header -->
+     {{user.profile_picture}}
+    <div class="profile-header">
+        {% if user.profile_picture %}
+            <img src="{{ user.profile_picture }}" alt="Profile Picture" class="profile-picture" />
+        {% else %}
+            <img src="https://via.placeholder.com/150" alt="Default Profile Picture" class="profile-picture" />
+        {% endif %}
+        <h1 class="mt-3">{{ user.first_name|default:"John" }} {{ user.last_name|default:"Doe" }}</h1>
+        <p class="text-muted">Web Developer | Tech Enthusiast</p>
+        <p><strong>Date of Birth:</strong> {{ user.date_of_birth|default:"N/A" }}</p>
+        <p><strong>Bio:</strong> {{ user.bio|default:"No bio available." }}</p>
+    </div>
+
+    <!-- Education Section -->
+    <div class="section-title">
+        <h2>Education</h2>
+    </div>
+    <ul class="list-group">
+        {% for edu in educations %}
+            <li class="list-group-item">{{ edu.degree }} - {{ edu.institution_name }}</li>
+        {% empty %}
+            <li class="list-group-item">No education records found.</li>
+        {% endfor %}
+    </ul>
+
+    <!-- Experience Section -->
+    <div class="section-title">
+        <h2>Experience</h2>
+    </div>
+    <ul class="list-group">
+        {% for exp in experiences %}
+            <li class="list-group-item">{{ exp.job_title }} at {{ exp.company_name }}</li>
+        {% empty %}
+            <li class="list-group-item">No experience records found.</li>
+        {% endfor %}
+    </ul>
+
+    <!-- Contact Information Section -->
+    <div class="section-title">
+        <h2>Contact Information</h2>
+    </div>
+    {{contact_info}}
+    <ul class="list-group">
+        <li class="list-group-item"><strong>Email:</strong> {{ contact_info.email|default:"Not provided" }}</li>
+        <li class="list-group-item"><strong>Phone:</strong> {{ contact_info.phone_number|default:"Not provided" }}</li>
+        <li class="list-group-item"><strong>Address:</strong> {{ contact_info.address|default:"Not provided" }}</li>
+    </ul>
+</div>
+
+<!-- Bootstrap JS and dependencies -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
